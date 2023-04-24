@@ -8,7 +8,7 @@ model = pickle.load(open('model.pkl', 'rb'))
 
 @app.route('/')
 def home():
-    return ('index.html')
+    return_templates ('index.html')
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -24,9 +24,9 @@ def predict():
     prediction = model.predict(input_data)
 
     if np.isfinite(prediction):
-        return ('index.html', prediction_text='Predicted Surface Roughness is {:.3f}'.format(prediction[0]))
+        return_templates ('index.html', prediction_text='Predicted Surface Roughness is {:.3f}'.format(prediction[0]))
     else:
-        return ('index.html', prediction_text='Prediction Error: Surface roughness could not be predicted.')
+        return_templates ('index.html', prediction_text='Prediction Error: Surface roughness could not be predicted.')
 
 
 if __name__ == "__main__":
