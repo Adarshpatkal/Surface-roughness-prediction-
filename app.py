@@ -24,9 +24,9 @@ def predict():
     prediction = model.predict(input_data)
 
     if np.isfinite(prediction):
-        return render_template('index.html', prediction_text='Predicted Surface Roughness is {:.3f}'.format(prediction[0]))
+        return ('index.html', prediction_text='Predicted Surface Roughness is {:.3f}'.format(prediction[0]))
     else:
-        return render_template('index.html', prediction_text='Prediction Error: Surface roughness could not be predicted.')
+        return ('index.html', prediction_text='Prediction Error: Surface roughness could not be predicted.')
 
 
 if __name__ == "__main__":
